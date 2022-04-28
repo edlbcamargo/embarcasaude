@@ -10,7 +10,6 @@ int e = 9;     // pino correspondente ao LED e
 int f = 8;     // pino correspondente ao LED f
 int g = 7;     // pino correspondente ao LED g
 int botao = 2; // pino correspondente ao botão 
-int contagem = 0;
 int tempo_ms = 500; // tempo de espera, em milissegundos
 
 // este código só é rodado uma vez, no início
@@ -28,9 +27,6 @@ void setup () {
 // este código se repete indefinidamente
 void loop () {
     if (digitalRead(botao) == LOW) {
-        contagem = 1;
-    }
-    if (contagem == 1) {
         digitalWrite(a, 1); //zero
         digitalWrite(b, 1);
         digitalWrite(c, 1);
@@ -111,6 +107,5 @@ void loop () {
         digitalWrite(f, 1);
         digitalWrite(g, 1);
         delay(tempo_ms);
-        contagem = 0;
     }
 }
