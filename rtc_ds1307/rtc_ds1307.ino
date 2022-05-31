@@ -42,18 +42,15 @@ void setup () {
         while (1);  // fica aqui parado em um loop infinito...
     }
   
-    if (rtc.isrunning()) { // Se o módulo não tiver sido inicializado ainda...
+    if (!rtc.isrunning()) { // Se o módulo não tiver sido inicializado ainda...
         Serial.println("Módulo RTC não inicializado. Ajustando data e hora.");
         rtc.adjust(DateTime(F(__DATE__), F(__TIME__))); // ajusta com data e hora em que o programa foi compilado
     }
 }
 
-int k =0;
 // esta função se repete indefinidamente
 void loop () {
-    k++;
-    //DateTime agora = rtc.now();
-    DateTime agora = rtc.now() + TimeSpan(0,0,0,3*k);
+    DateTime agora = rtc.now();
     imprime_data_e_hora(agora);
 
     DateTime futuro = agora + TimeSpan(1,2,3,4); // agora + 1 dia, 2 horas, 3 minutos e 4 segundos
