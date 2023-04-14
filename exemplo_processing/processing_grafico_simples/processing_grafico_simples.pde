@@ -49,14 +49,15 @@ void draw(){
             rect(posicao, 0, 2, 480);
             
             // converte o dado recebido (texto) em um número que cabe no gráfico
-            medida = int(float(Buffer)*480/1024.0);
+            medida = int(float(Buffer)*480/1023.0);
             
             // desenha dado atual (y=0 fica no topo da tela)
             stroke(255,0,0); // cor da linha (R,G,B: vermelho)
-            line(posicao, 480-medida_anterior, posicao+1, 480-medida);
+            line(posicao, 479-medida_anterior, posicao+1, 479-medida);
             posicao = posicao + 1;
             if (posicao >= 638) posicao = 0; // se chegou no final da tela
             medida_anterior = medida;
         }
     }
+    if (MinhaSerial.available() > 10) println(MinhaSerial.available());
 }
